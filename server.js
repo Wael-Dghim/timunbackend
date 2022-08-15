@@ -10,7 +10,7 @@ const morgan = require("morgan");
 const Mongoose = require("mongoose");
 
 //AdminRoute
-const { admin } = require("./routes/admin/admin");
+const { admin } = require("./routes/admin/admin.js");
 
 const { events } = require("./routes/events");
 

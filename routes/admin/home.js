@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Mongoose = require("mongoose");
-const Team = require("../../models/home");
+const Team = require("../../models/Home");
 
 router.post("/teams", (req, res) => {
   const { name, position, img, desc, accounts } = req.body;

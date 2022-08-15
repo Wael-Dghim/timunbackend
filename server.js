@@ -15,7 +15,7 @@ const { admin } = require("./routes/admin/admin.js");
 const { events } = require("./routes/events");
 
 //Models
-const Team = require("./models/home");
+const Team = require("./models/Home");
 const Studyguide = require("./models/Studyguide");
 const Event = require("./models/Event");
 const Training = require("./models/Training");

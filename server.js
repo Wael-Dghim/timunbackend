@@ -71,7 +71,7 @@ Mongoose.connect(process.env.DB, {
 })
   .then(() => {
     app.listen(
-      3200,
+      process.env.PORT || 3200,
       console.log("Server is live on port 3200...", "DB Connected")
     );
   })

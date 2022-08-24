@@ -8,6 +8,7 @@ const SGSchema = new Mongoose.Schema({
   content: String,
   full: String,
   event: String,
+  language: String,
 });
 
 module.exports = Mongoose.model("studyguide", SGSchema);

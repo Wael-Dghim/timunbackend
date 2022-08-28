@@ -5,7 +5,6 @@ const eventSchema = new Mongoose.Schema({
   cover: String,
   date: Date,
   status: String,
-  mandate: String,
   drive: String,
   aftermovie: String,
   sponsors: [String],

@@ -5,7 +5,6 @@ const articleSchema = new Mongoose.Schema({
   articles: [String],
   author: String,
   content: String,
-  img: String,
   date: Date,
 });
 

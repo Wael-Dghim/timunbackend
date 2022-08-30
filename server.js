@@ -66,7 +66,7 @@ app.get("/trainings", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Nik rab om el world");
+  res.httpStatus(200);
 });
 
 Mongoose.connect(process.env.DB, {

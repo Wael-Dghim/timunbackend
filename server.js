@@ -65,6 +65,10 @@ app.get("/trainings", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Nik rab om el world");
+});
+
 Mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

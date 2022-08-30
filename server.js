@@ -66,7 +66,7 @@ app.get("/trainings", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendStatus(200);
+  res.send("nik rab om aws");
 });
 
 Mongoose.connect(process.env.DB, {

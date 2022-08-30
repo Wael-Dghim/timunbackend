@@ -69,10 +69,14 @@ app.get("/", (req, res) => {
   res.send("nik rab om aws");
 });
 
-Mongoose.connect(process.env.DB, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+Mongoose.connect(
+  process.env.DB ||
+    "mongodb+srv://TAdmin:zEdJc3bBEkzxIOPz@timuncluster.gl9fw.mongodb.net/TIMUNweb",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+)
   .then(() => {
     app.listen(
       process.env.PORT || 3200,

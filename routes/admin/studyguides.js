@@ -13,23 +13,16 @@ router.post("/", (req, res) => {
     full,
     event,
   });
-  newSGuide.save().then((doc) => {
-    res.json(doc);
-  });
+  newSGuide.save();
 });
 
 router.put("/", (req, res) => {
   const updatedSGuide = req.body;
-  Studyguide.updateOne(
-    { _id: updatedSGuide._id },
-    { $set: updatedSGuide }
-  ).then((doc) => console.log(doc));
+  Studyguide.updateOne({ _id: updatedSGuide._id }, { $set: updatedSGuide });
 });
 
 router.delete("/", (req, res) => {
-  Studyguide.deleteOne({ _id: req.body._id }).then(() =>
-    res.json({ message: "doc deleted" })
-  );
+  Studyguide.deleteOne({ _id: req.body._id });
 });
 
 module.exports = { studyguides: router };

@@ -19,7 +19,6 @@ router.use("/sguides", studyguides);
 router.post("/login", (req, res) => {
   const { user, pass } = req.body;
   Admin.findOne({ username: user }).then((result) => {
-    console.log(result);
     if (!result) {
       return null;
     }

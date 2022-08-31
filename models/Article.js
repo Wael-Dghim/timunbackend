@@ -6,6 +6,7 @@ const articleSchema = new Mongoose.Schema({
   author: String,
   content: String,
   date: Date,
+  description: String,
 });
 
 module.exports = Mongoose.model("article", articleSchema);

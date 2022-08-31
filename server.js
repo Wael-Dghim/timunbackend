@@ -11,7 +11,9 @@ const Mongoose = require("mongoose");
 
 //AdminRoute
 const { admin } = require("./routes/admin/admin.js");
-
+const { sguides } = require("./routes/studyguides.js");
+const { home } = require("./routes/home.js");
+const { articles } = require("./routes/articles.js");
 const { events } = require("./routes/events");
 
 //Models
@@ -31,42 +33,15 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 //Routing
-// app.use("/sguides", sguides);
+app.use("/sguides", sguides);
 app.use("/events", events);
 app.use("/admin", admin);
-// app.use("/articles", articles);
-// app.use("/home", home);
+app.use("/articles", articles);
+app.use("/home", home);
 
-app.get("/sguides", (req, res) => {
-  Studyguide.find()
-    .sort({ date: -1 })
-    .then((data) => {
-      res.json(data);
-    });
-});
-
-app.get("/home/teams", (req, res) => {
-  Team.find().then((data) => {
-    res.json(data);
-  });
-});
-
-app.get("/articles", (req, res) => {
-  Article.find()
-    .sort({ date: -1 })
-    .then((data) => {
-      res.json(data);
-    });
-});
-
-app.get("/trainings", (req, res) => {
-  Training.find().then((data) => {
-    res.json(data);
-  });
-});
-
+//AWS EB health check
 app.get("/", (req, res) => {
-  res.send("nik rab om aws");
+  res.sendStatus(200);
 });
 
 Mongoose.connect(process.env.DB, {
@@ -74,9 +49,6 @@ Mongoose.connect(process.env.DB, {
   useUnifiedTopology: true,
 })
   .then(() => {
-    app.listen(
-      process.env.PORT || 3200,
-      console.log("Server is live on port 3200...", "DB Connected")
-    );
+    app.listen(process.env.PORT || 3200);
   })
   .catch((err) => console.log(err));

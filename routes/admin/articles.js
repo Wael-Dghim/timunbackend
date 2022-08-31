@@ -12,23 +12,16 @@ router.post("/", (req, res) => {
     img,
     date,
   });
-  newArticle.save().then((doc) => {
-    res.json({ message: "doc added" });
-  });
+  newArticle.save();
 });
 
 router.put("/", (req, res) => {
   const updatedArticle = req.body;
-  Article.updateOne({ _id: updatedArticle._id }, { $set: updatedArticle }).then(
-    () => res.json({ message: "doc updated" })
-  );
-  console.log(updatedArticle);
+  Article.updateOne({ _id: updatedArticle._id }, { $set: updatedArticle });
 });
 
 router.delete("/", (req, res) => {
-  Article.deleteOne({ _id: req.body._id }).then((doc) =>
-    res.json({ message: "doc deleted" })
-  );
+  Article.deleteOne({ _id: req.body._id });
 });
 
 module.exports = { articles: router };

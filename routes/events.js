@@ -11,12 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.put("/countend", (req, res) => {
-  console.log(req.body);
-  Event.updateOne({ _id: req.body._id }, { $set: { status: "inactive" } }).then(
-    (rep) => {
-      console.log(rep);
-    }
-  );
+  Event.updateOne({ _id: req.body._id }, { $set: { status: "inactive" } });
 });
 
 module.exports = { events: router };

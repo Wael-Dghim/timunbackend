@@ -16,13 +16,6 @@ const { home } = require("./routes/home.js");
 const { articles } = require("./routes/articles.js");
 const { events } = require("./routes/events");
 
-//Models
-const Team = require("./models/Home");
-const Studyguide = require("./models/Studyguide");
-const Event = require("./models/Event");
-const Training = require("./models/Training");
-const Article = require("./models/Article");
-
 //App
 const app = Express();
 

@@ -3,7 +3,7 @@ const Mongoose = require("mongoose");
 const Studyguide = require("../../models/Studyguide");
 
 router.post("/", (req, res) => {
-  const { title, author, date, organ, content, full, event } = req.body;
+  const { title, author, date, organ, content, full, event, language } = req.body;
   const newSGuide = new Studyguide({
     title,
     author,
@@ -12,6 +12,7 @@ router.post("/", (req, res) => {
     content,
     full,
     event,
+    language,
   });
   newSGuide.save();
 });

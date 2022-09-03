@@ -22,7 +22,9 @@ router.put("/", (req, res) => {
 });
 
 router.delete("/", (req, res) => {
-  Studyguide.deleteOne({ _id: req.body._id });
+  Studyguide.deleteOne({ _id: req.body._id }).then(() => {
+    console.log("hh")
+  });
 });
 
 module.exports = { studyguides: router };

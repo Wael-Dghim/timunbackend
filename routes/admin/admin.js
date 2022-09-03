@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Admin = require("../../models/Admin");
 const Mongoose = require("mongoose");
+const cors = require("cors");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -15,6 +16,9 @@ router.use("/events", events);
 router.use("/home", home);
 router.use("/articles", articles);
 router.use("/sguides", studyguides);
+
+
+router.use(cors);
 
 router.post("/login", (req, res) => {
   const { user, pass } = req.body;

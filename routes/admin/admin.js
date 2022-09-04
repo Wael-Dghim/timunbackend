@@ -17,8 +17,7 @@ router.use("/home", home);
 router.use("/articles", articles);
 router.use("/sguides", studyguides);
 
-
-router.use(cors);
+router.use(cors());
 
 router.post("/login", (req, res) => {
   const { user, pass } = req.body;

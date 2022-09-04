@@ -9,6 +9,7 @@ const eventSchema = new Mongoose.Schema({
   aftermovie: String,
   sponsors: [String],
   description: String,
+  location: String,
 });
 
 module.exports = Mongoose.model("event", eventSchema);

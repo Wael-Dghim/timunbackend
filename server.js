@@ -42,6 +42,6 @@ Mongoose.connect(process.env.DB, {
   useUnifiedTopology: true,
 })
   .then(() => {
-    app.listen(process.env.PORT || 3200);
+    app.listen(process.env.PORT || 3200, console.log("Server is Live");
   })
   .catch((err) => console.log(err));

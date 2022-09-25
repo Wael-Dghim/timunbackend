@@ -5,6 +5,7 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+const compression = require("compression")
 
 //DB
 const Mongoose = require("mongoose");
@@ -24,6 +25,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+app.use(compression())
 
 //Routing
 app.use("/sguides", sguides);

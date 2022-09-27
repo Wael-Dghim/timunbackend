@@ -21,11 +21,11 @@ const { events } = require("./routes/events");
 const app = Express();
 
 //Middleware
+app.use(compression());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
-app.use(compression())
 
 //Routing
 app.use("/sguides", sguides);

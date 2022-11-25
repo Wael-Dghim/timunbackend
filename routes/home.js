@@ -1,8 +1,14 @@
 const router = require("express").Router();
-const Team = require("../models/Home");
+const home = require("../models/Home");
 
 router.get("/teams", (req, res) => {
-  Team.find().then((data) => {
+  home.Team.find().then((data) => {
+    res.json(data);
+  });
+});
+
+router.get("/", (req, res) => {
+  home.About.find().then((data) => {
     res.json(data);
   });
 });

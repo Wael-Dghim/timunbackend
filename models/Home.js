@@ -8,4 +8,13 @@ const teamSchema = new Mongoose.Schema({
   accounts: { facebook: String, insta: String, linkedin: String },
 });
 
-module.exports = Mongoose.model("team", teamSchema);
+const aboutSchema = new Mongoose.Schema({
+  name: String,
+  text: String,
+  src: String,
+});
+
+module.exports = {
+  Team: Mongoose.model("team", teamSchema),
+  About: Mongoose.model("about", aboutSchema),
+};

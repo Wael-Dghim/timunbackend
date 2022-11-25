@@ -10,8 +10,10 @@ const teamSchema = new Mongoose.Schema({
 
 const aboutSchema = new Mongoose.Schema({
   name: String,
-  text: String,
-  src: String,
+  text1: String,
+  src1: String,
+  text2: String,
+  src2: String,
 });
 
 module.exports = {

@@ -9,7 +9,8 @@ const teamSchema = new Mongoose.Schema({
 });
 
 const aboutSchema = new Mongoose.Schema({
-  name: String,
+  title1: String,
+  title2: String,
   text1: String,
   src1: String,
   text2: String,

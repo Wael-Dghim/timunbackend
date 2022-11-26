@@ -11,16 +11,28 @@ router.post("/teams", (req, res) => {
     desc,
     accounts,
   });
-  newTeam.save();
+  newTeam.save().then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 router.put("/teams", (req, res) => {
   const updatedTeam = req.body;
-  Team.updateOne({ _id: updatedTeam._id }, { $set: updatedTeam });
+  Team.updateOne({ _id: updatedTeam._id }, { $set: updatedTeam }).then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 router.delete("/teams", (req, res) => {
-  Team.deleteOne({ _id: req.body._id });
+  Team.deleteOne({ _id: req.body._id }).then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 module.exports = { home: router };

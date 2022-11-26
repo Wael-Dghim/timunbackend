@@ -15,16 +15,30 @@ router.post("/", (req, res) => {
     sponsors,
     description,
   });
-  newEvent.save();
+  newEvent.save().then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 router.put("/", (req, res) => {
   const updatedEvent = req.body;
-  Event.updateOne({ _id: updatedEvent._id }, { $set: updatedEvent });
+  Event.updateOne({ _id: updatedEvent._id }, { $set: updatedEvent }).then(
+    () => {
+      res.json({
+        success: true,
+      });
+    }
+  );
 });
 
 router.delete("/", (req, res) => {
-  Event.deleteOne({ _id: req.body._id });
+  Event.deleteOne({ _id: req.body._id }).then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 module.exports = { events: router };

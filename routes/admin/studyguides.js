@@ -3,7 +3,8 @@ const Mongoose = require("mongoose");
 const Studyguide = require("../../models/Studyguide");
 
 router.post("/", (req, res) => {
-  const { title, author, date, organ, content, full, event, language } = req.body;
+  const { title, author, date, organ, content, full, event, language } =
+    req.body;
   const newSGuide = new Studyguide({
     title,
     author,
@@ -14,18 +15,35 @@ router.post("/", (req, res) => {
     event,
     language,
   });
-  newSGuide.save();
+  newSGuide.save().then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 router.put("/", (req, res) => {
   const updatedSGuide = req.body;
-  Studyguide.updateOne({ _id: updatedSGuide._id }, { $set: updatedSGuide });
+  Studyguide.updateOne(
+    { _id: updatedSGuide._id },
+    { $set: updatedSGuide }
+  ).then(() => {
+    res.json({
+      success: true,
+    });
+  });
 });
 
 router.delete("/", (req, res) => {
   Studyguide.deleteOne({ _id: req.body._id }).then(() => {
-    console.log("hh")
+    res.json({
+      success: true,
+    });
   });
+});
+
+router.get("/", (req, res) => {
+  res.sendStatus(200);
 });
 
 module.exports = { studyguides: router };

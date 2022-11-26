@@ -20,18 +20,39 @@ router.use("/sguides", studyguides);
 router.use(cors());
 
 router.post("/login", (req, res) => {
-  const { user, pass } = req.body;
-  Admin.findOne({ username: user }).then((result) => {
-    if (!result) {
-      return null;
-    }
-    bcrypt.compare(pass, result.password).then(() => {
-      const accessToken = jwt.sign({ user, pass }, process.env.A_TOKEN, {
-        expiresIn: "2h",
+  const { username, pass } = req.body;
+  Admin.findOne({ username }).then((user) => {
+    if (user) {
+      bcrypt.compare(pass, user.password, (error, result) => {
+        if (error) res.json({ message: "An error occured", err });
+        if (result) {
+          let token = jwt.sign(
+            { name: user.name },
+            "028b1e10bee489f12203aba9dfed0bb6ff77e0cee1fb73263de885a0bd51bf342988912302eec9c19b6821a59ad96676dd21974a776df4b3a050578c6212a404",
+            {
+              expiresIn: "2h",
+            }
+          );
+          res.json({
+            message: "Login Successful",
+            user,
+            token,
+          });
+        } else {
+          res.json({ message: "Wrong password" });
+        }
       });
-      res.json({ accessToken });
-    });
+    } else {
+      res.json({
+        message:
+          "User not found! Please make sure you entered the correct information",
+      });
+    }
   });
+});
+
+router.get("/login", (req, res) => {
+  res.sendStatus(200);
 });
 
 module.exports = { admin: router };

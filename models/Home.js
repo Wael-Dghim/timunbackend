@@ -17,6 +17,8 @@ const aboutSchema = new Mongoose.Schema({
   src2: String,
   link1: String,
   link2: String,
+  boolean1: Boolean,
+  boolean2: Boolean,
 });
 
 module.exports = {

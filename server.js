@@ -27,6 +27,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
+//CORS Headers
+app.use((_req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+
+  next();
+});
+
 //Routing
 app.use("/sguides", sguides);
 app.use("/events", events);

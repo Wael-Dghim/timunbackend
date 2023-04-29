@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.sendStatus(200);
 });
 
-Mongoose.connect(process.env.PORT, {
+Mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

@@ -29,7 +29,6 @@ app.use(morgan("dev"));
 
 //CORS Headers
 
-
 //Routing
 app.use("/sguides", sguides);
 app.use("/events", events);
@@ -42,13 +41,10 @@ app.get("/", (req, res) => {
   res.sendStatus(200);
 });
 
-Mongoose.connect(
-  "mongodb+srv://TAdmin:zEdJc3bBEkzxIOPz@timuncluster.gl9fw.mongodb.net/TIMUNweb",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-)
+Mongoose.connect(process.env.PORT, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     app.listen(process.env.PORT || 3200, console.log("Server is Live"));
   })
